@@ -31,6 +31,16 @@ $routes = [
     '404' => function () {
         include "vue/404_vue.php";
     },
+    'connexion' => function () {
+        include_once "controleur/authentification_controleur.php";
+        $result = afficherConnexion();
+        chargerVue($result);
+    },
+    'deconnexion' => function () {
+        include_once "controleur/authentification_controleur.php";
+        $result = afficherDeconnexion();
+        chargerVue($result);
+    },
     'afficheBateau' => function () {
         include_once "controleur/bateau_controleur.php";
         $response = afficherBateaux();

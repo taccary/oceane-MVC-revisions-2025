@@ -55,16 +55,18 @@
                     <a class="nav-link" href="index.php?p=afficheTraversees">Traversées</a>
                 </li>
                 
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    partie CRUD
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="index.php?p=afficherCRUDBateau">Modifier les bateaux</a>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            partie CRUD
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="index.php?p=afficherCRUDBateau">Modifier les bateaux</a>
+                            </li>
+                        </ul>
                     </li>
-                </ul>
-                </li>
+                <?php endif; ?>
                 <?php if (isset($_SESSION['user'])): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?p=deconnexion">Déconnexion (<?= htmlspecialchars($_SESSION['user']['username']) ?>)</a>
