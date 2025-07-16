@@ -36,6 +36,16 @@ $routes = [
         $response = afficherBateaux();
         chargerVue($response);
     },
+    'afficheLiaisons' => function () {
+        include_once "controleur/liaison_controleur.php";
+        $response = afficherLiaisons();
+        chargerVue($response);
+    },
+    'afficheTraversees' => function () {
+        include_once "controleur/traversee_controleur.php";
+        $response = afficherTraversees();
+        chargerVue($response);
+    },
     'afficherCRUDBateau' => function () {
         include_once "controleur/bateau_controleur.php";
         $response = afficherCRUDBateaux();

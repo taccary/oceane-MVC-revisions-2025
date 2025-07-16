@@ -6,7 +6,7 @@
  * @version 1.0
  */
 
-// inclusion des autres fichiers modele necessaires
+// inclusion des autres fichiers modèle nécessaires
 include_once "bd.inc.php"; // fichier de connexion à la base de données
 
 /**

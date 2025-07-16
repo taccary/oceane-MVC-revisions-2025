@@ -23,7 +23,7 @@ function afficherBateaux() : array {
     
     // Retourner le chemin de la vue et les données
     return [
-        'view' => __DIR__ . '/../vue/bateau_vue.php',
+        'view' => __DIR__ . '/../vue/afficheBateaux_vue.php',
         'data' => [
             'lesNiveauxPMR' => $lesNiveauxPMR,
             'lesBateaux' => $lesBateaux

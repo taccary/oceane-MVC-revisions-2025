@@ -48,6 +48,12 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php?p=afficheBateau">Navires</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=afficheLiaisons">Liaisons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=afficheTraversees">Traversées</a>
+                </li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     partie CRUD
