@@ -52,6 +52,9 @@
                     <a class="nav-link" href="index.php?p=afficheLiaisons">Liaisons</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=afficheTarifs">Tarifs</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="index.php?p=afficheTraversees">Traversées</a>
                 </li>
                 

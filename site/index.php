@@ -51,6 +51,11 @@ $routes = [
         $response = afficherLiaisons();
         chargerVue($response);
     },
+    'afficheTarifs' => function () {
+        include_once "controleur/tarification_controleur.php";
+        $response = afficherTarifs();
+        chargerVue($response);
+    },
     'afficheTraversees' => function () {
         include_once "controleur/traversee_controleur.php";
         $response = afficherTraversees();
