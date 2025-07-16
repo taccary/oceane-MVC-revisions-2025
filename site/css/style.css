@@ -1,0 +1,108 @@
+/* Importer une police Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Couleurs globales */
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #388E3C;
+  --accent-color: #C8E6C9;
+  --text-color: #FFFFFF;
+  --text-dark: #333333;
+}
+
+/* Corps du site */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--accent-color); /* Fond clair */
+  color: var(--text-dark); /* Texte par défaut */
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 20pt;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer.page-footer {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  padding: 10px;
+  text-align: center;
+  font-size: 12pt;
+}
+
+/* Boutons */
+button, .btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Tableaux */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--accent-color);
+}
+
+/* Liens */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Classes utilitaires */
+.mtop20 {
+  margin-top: 20px !important;
+}
+
+.mbot20 {
+  margin-bottom: 20px !important;
+}
+
+.ptop10 {
+  padding-top: 10px !important;
+}
+
+.pbot10 {
+  padding-bottom: 10px !important;
+}

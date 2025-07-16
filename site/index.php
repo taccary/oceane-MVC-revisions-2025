@@ -1,85 +1,88 @@
 <?php
-/**
- * Page d'accueil du site LAMP
- * 
- * Cette page sert d'exemple pour tester la génération de documentation
- * avec phpDocumentor.
- * 
- * @author Votre équipe de développement
- * @version 1.0
- * @since 2025-07-08
- */
+session_start();
+include "configBdd.php"; // fichier de configuration de la base de données
 
-require_once 'classes/Calculator.php';
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site LAMP - Exemple de documentation</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .demo-section { background: #f5f5f5; padding: 15px; margin: 20px 0; border-radius: 5px; }
-        .success { color: green; font-weight: bold; }
-    </style>
-</head>
-<body>
-    <h1>🎯 Site LAMP - Exemple d'utilisation</h1>
-    
-    <div class="demo-section">
-        <h2>📊 Utilisation de la classe Calculator</h2>
-        <?php
-        $calc = new Calculator();
-        $result = $calc->add(5, 3);
-        echo "<p class='success'>5 + 3 = " . $result . "</p>";
-        
-        $result2 = $calc->multiply(4, 7);
-        echo "<p class='success'>4 × 7 = " . $result2 . "</p>";
-        ?>
-    </div>
-    
-    <div class="demo-section">
-        <h2>📚 Génération de la documentation</h2>
-        <p>Pour générer localement la documentation des classes de ce code, depuis la racine du projet utilisez la commande suivante :</p>
-        <pre><code>php documentation/tools/phpDocumentor.phar run -c documentation/tools/phpdoc.xml</code></pre>
-        <p>Cette commande analysera les commentaires PHPDoc et générera la documentation dans le dossier <code>documentation/generated</code>.</p>
-        <p>Après la génération, démarrez un serveur php sur le port 8001 et mappez-le avec le dossier <code>documentation/generated</code> :</p>
-        <pre><code>php -S localhost:8001 -t documentation/generated/</code></pre>
-        <p>Ouvrez dans le navigateur le site executé sur le port 8001 du conteneur pour consulter la documentation générée.</p>
-    </div>
+// Définition des variables de métadonnées
+$title = "Compagnie Océane";
+$keywords = "croisière, morbihan";
+$description = "Bienvenue sur le site de la Compagnie Océane, votre partenaire pour des voyages en mer.";
 
-    <div class="demo-section">
-        <h2>🧪 Tests de la classe Calculator</h2>
-        <p>Les tests unitaires sont exécutés pour valider le bon fonctionnement de la classe Calculator. Pour tester :</p>
-        <pre><code>composer install<br>vendor/bin/phpunit --testdox tests/CalculatorTest.php</code></pre>
-        <p>Résultats des tests :</p>
-        <pre><code>
-            Calculator
-            ✘ Addition
-            │
-            │ Failed asserting that -3.0 matches expected 3.
-            │
-            │ /workspaces/LAMP-start/tests/CalculatorTest.php:43
-            │
-            ✔ Addition with decimals
-            ✔ Addition with negative numbers
-            ✔ Subtraction
-            ✔ Multiplication
-            ✔ Multiplication by zero
-            ✔ Division
-            ✔ Division with decimal result
-            ✔ Division by zero throws exception
-            ✔ History
-            ✔ Clear history
-            ✔ History contains timestamp
-            ✔ Multiple additions
-            ✔ Performance
+// Fonction pour charger une vue
+function chargerVue(array $response) {
+    $vue = $response['view'];
+    $data = $response['data'];
 
-            FAILURES!
-            Tests: 14, Assertions: 24, Failures: 1.
-        </code></pre>
-    </div>
+    if (!file_exists($vue)) {
+        echo "Vue non trouvée.";
+        return;
+    }
 
-</body>
-</html>
+    extract($data); // Rendre les données disponibles dans la vue
+    include $vue;
+}
+
+// Table de routage
+$routes = [
+    // chaque route est associée à une fonction "anonyme" qui sera exécutée lorsque la route est appelée
+    // Les fonctions anonymes sont des fonctions sans nom qui peuvent être définies à la volée et utilisées comme des variables. Elles sont souvent utilisées pour des callbacks ou des fonctions de traitement d'événements.
+    'accueil' => function () {
+        include "vue/accueil_vue.php";
+    },
+    '404' => function () {
+        include "vue/404_vue.php";
+    },
+    'afficheBateau' => function () {
+        include_once "controleur/bateau_controleur.php";
+        $response = afficherBateaux();
+        chargerVue($response);
+    },
+    'afficherCRUDBateau' => function () {
+        include_once "controleur/bateau_controleur.php";
+        $response = afficherCRUDBateaux();
+        chargerVue($response);
+    },
+    'chargerModaleBateau' => function () {
+        include_once "controleur/bateau_controleur.php";
+        if (isset($_POST['action'])) {
+            $action = $_POST['action'];
+            $id = $_POST['id'] ?? null; // Récupérer l'ID du bateau (null si action = add)
+            $response = ChargerModale($action, $id);
+            chargerVue($response);
+        } 
+        exit;
+    },
+    'actionCRUDBateau' => function () {
+        include_once "controleur/bateau_controleur.php";
+        $action = $_GET['action'] ?? null;
+
+        switch ($action) {
+            case 'add':
+                ajouterBateau();
+                break;
+            case 'edit':
+                $nom = $_POST['nom'];
+                $id = $_POST['id'];
+                modifierBateau($id, $nom);
+                break;
+            case 'delete':
+                supprimerBateau();
+                break;
+            default:
+                echo "Action non reconnue.";
+                break;
+        }
+    }
+];
+
+// Gestion des routes
+if (isset($_GET['p'])) {
+    $page = $_GET['p'];
+} else {
+    $page = 'accueil'; // Route par défaut : accueil
+}
+
+if (array_key_exists($page, $routes)) {
+    $routes[$page](); // Exécuter la fonction associée à la route
+} else {
+    $routes['404'](); // Exécuter la fonction de la page 404
+}

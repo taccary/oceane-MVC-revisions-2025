@@ -58,7 +58,7 @@
 	"containerEnv": {
 		"MYSQL_ADMIN_USER": "admin",
 		"MYSQL_ADMIN_PASSWORD": "admin_password",
-		"DATABASE_NAME": "app_database"
+		"DATABASE_NAME": "oceane"
 	},
 
 	// Commande à exécuter après la création du conteneur
