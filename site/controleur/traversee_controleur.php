@@ -33,6 +33,7 @@ function afficherTraversees() : array {
             $liaisonSelectionnee = getLiaisonById($idLiaison);
             $lesTraversees = getTraverseesByLiaisonAndDate($idLiaison, $date);
             $placesCapacite = getPlacesTraverseesByLiaisonAndDate($idLiaison, $date);
+            $placesReservees = getPlacesReservesTraversees();
         }
     }
     
@@ -46,6 +47,7 @@ function afficherTraversees() : array {
             'liaisonSelectionnee' => $liaisonSelectionnee,
             'dateTraversee' => $date,
             'placesCapacite' => $placesCapacite,
+            'placesReservees' => $placesReservees,
             'lesCategories' => getCategories(),
             'lesSecteurs' => getSecteurs()
         ]

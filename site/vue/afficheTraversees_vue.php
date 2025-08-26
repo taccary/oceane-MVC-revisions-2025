@@ -119,7 +119,13 @@ ob_start();
                       <td><?= $traversee['nom'] ?></td>
                       <?php
                       foreach ($lesCategories as $categorie){
-                        $placesDispo = $placesCapacite[$traversee['num']][$categorie['idCategorie']];
+                        $nbPlaces = $placesCapacite[$traversee['num']][$categorie['idCategorie']];
+                        if (isset($placesReservees[$traversee['num']][$categorie['idCategorie']])) {
+                          $nbPlacesReservees = $placesReservees[$traversee['num']][$categorie['idCategorie']];
+                        } else {
+                          $nbPlacesReservees = 0;
+                        }
+                        $placesDispo = $nbPlaces - $nbPlacesReservees;
 
                       ?>
                         <td><?= $placesDispo ?></td>
