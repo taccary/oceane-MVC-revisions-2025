@@ -1,10 +1,6 @@
-# 📦 site Océane (front-office & back-office) en architecture MVC
+# 📦 site Océane (front-office & back-office) en architecture MVC - révisions
 
 Projet réalisé dans le cadre des AP web en SIO1 SLAM au semestre 2 de l'année scolaire 2024-25.  
-Ce projet a été développé par l'équipe XXX formée par :
-- nom des équipiers,
-- nom des équipiers,
-- nom des équipiers.
 
 ---
 
@@ -21,12 +17,7 @@ Ce projet a été développé par l'équipe XXX formée par :
 
 ## 📄 Présentation du projet
 
-Ce projet est une application web permettant de **[fonction principale]**.  
-Elle permet notamment de :
-- Ajouter / Modifier / Supprimer des [entités]
-- Afficher une liste de [autres entités]
-- Gérer des utilisateurs (optionnel)
-
+Ce projet est un POC d'application web permettant de gérer les traversées de la compagnie Océane. 
 
 ## 🧱 Architecture MVC
 
@@ -230,5 +221,3 @@ Dans ce code on va retrouver 3 parties :
         - `modifierBateau()` : Modifie un bateau existant.  
         - `supprimerBateau()` : Supprime un bateau et son image associée.
 
-
-**_A compléter_**
