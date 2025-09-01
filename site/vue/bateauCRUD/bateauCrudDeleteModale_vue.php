@@ -10,7 +10,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             <i class="bi bi-x-circle"></i> Annuler
         </button>
-        <button type="submit" name="supr" class="btn btn-danger">
+        <button type="submit" class="btn btn-danger">
             <i class="bi bi-trash3"></i> Supprimer
         </button>
     </form>

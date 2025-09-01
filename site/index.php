@@ -85,9 +85,7 @@ $routes = [
                 ajouterBateau();
                 break;
             case 'edit':
-                $nom = $_POST['nom'];
-                $id = $_POST['id'];
-                modifierBateau($id, $nom);
+                modifierBateau();
                 break;
             case 'delete':
                 supprimerBateau();

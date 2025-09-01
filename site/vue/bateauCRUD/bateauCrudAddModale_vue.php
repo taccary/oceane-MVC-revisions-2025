@@ -33,7 +33,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
         <i class="bi bi-x-circle"></i> Annuler
         </button>
-        <button type="submit" name="add" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary">
             <i class="bi bi-download"></i> Enregistrer
         </button>
     </div>

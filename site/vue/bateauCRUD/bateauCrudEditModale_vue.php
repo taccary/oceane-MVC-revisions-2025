@@ -40,7 +40,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             <i class="bi bi-x-circle"></i> Annuler
         </button>
-        <button type="submit" name="edit" class="btn btn-success">
+        <button type="submit" class="btn btn-success">
             <i class="bi bi-pencil-square"></i> Modifier
         </button>
     </div>
