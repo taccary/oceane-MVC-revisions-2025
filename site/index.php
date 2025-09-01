@@ -7,7 +7,12 @@ $title = "Compagnie Océane";
 $keywords = "croisière, morbihan";
 $description = "Bienvenue sur le site de la Compagnie Océane, votre partenaire pour des voyages en mer.";
 
-// Fonction pour charger une vue
+/**
+ * Fonction pour charger une vue
+ *
+ * @param array $response
+ * @return void
+ */
 function chargerVue(array $response) {
     $vue = $response['view'];
     $data = $response['data'];
@@ -19,6 +24,15 @@ function chargerVue(array $response) {
 
     extract($data); // Rendre les données disponibles dans la vue
     include $vue;
+}
+
+/**
+ * Fonction pour protéger les routes nécessitant une authentification
+ *
+ * @return void
+ */
+function requireAuth() {
+    // code à implémenter
 }
 
 // Table de routage

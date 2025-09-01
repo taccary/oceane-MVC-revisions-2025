@@ -1,6 +1,11 @@
 <?php
 include_once __DIR__ . '/../modele/authentification_modele.php';
 
+/**
+ * Fonction pour afficher la vue de connexion
+ *
+ * @return void
+ */
 function afficherConnexion() {
     $message = null;
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,6 +24,11 @@ function afficherConnexion() {
     ];
 }
 
+/**
+ * Fonction pour afficher la vue de déconnexion
+ *
+ * @return void
+ */
 function afficherDeconnexion() {
     logout();
     return [
