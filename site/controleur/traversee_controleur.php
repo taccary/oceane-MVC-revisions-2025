@@ -23,6 +23,7 @@ function afficherTraversees() : array {
     $date = null;
     $lesTraversees = null;
     $placesCapacite = null;
+    $placesReservees = null;
     if (isset($_GET['secteur']) && $_GET['secteur'] != "") {
         $idSecteur = intval($_GET['secteur']);
         $secteurSelectionne = getSecteurById($idSecteur);
